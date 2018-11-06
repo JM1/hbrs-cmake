@@ -1,5 +1,5 @@
 # hbrs-cmake
-[![Build Status](https://travis-ci.org/JM1/hbrs-cmake.svg?branch=master)](https://travis-ci.org/JM1/hbrs-cmake)
+[![Build Status](https://travis-ci.com/JM1/hbrs-cmake.svg?branch=master)](https://travis-ci.com/JM1/hbrs-cmake)
 
 # How to build this code using Docker
 
