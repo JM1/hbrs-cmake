@@ -68,8 +68,6 @@ install:
   - echo $PATH
   - echo $PWD
   - >
-    set -e;
-    
     if [ ! -d "${INSTALL_PREFIX}" ]; then 
         mkdir "${INSTALL_PREFIX}";
     fi;
@@ -101,7 +99,6 @@ before_script:
   - ctest --version
 
 script:
-#  - set -o errexit
   - ccache -s
   - >
     mkdir build && cd build &&
