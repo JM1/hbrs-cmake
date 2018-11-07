@@ -22,9 +22,7 @@ option(HBRS_CMAKE_ENABLE_TESTS "Build unit tests." ON)
 
 # NOTE: Keep list of packages in sync with dependencies in *-cmake.in!
 
-# Hana is part of boost since 1.61, Ref.: http://www.boost.org/users/history/
-# BOOST_TEST macro requires 1.59, Ref.: https://stackoverflow.com/a/38083784/6490710
-find_package(Boost 1.61 REQUIRED COMPONENTS unit_test_framework system thread)
+find_package(Boost 1.62 REQUIRED COMPONENTS unit_test_framework system thread)
 set_package_properties(Boost PROPERTIES
     PURPOSE "Required for meta programming, unit tests and others."
     TYPE REQUIRED
