@@ -12,7 +12,7 @@ else()
 endif()
 
 if(NOT netcdf_FOUND)
-	find_package(netCDF ${maybe_quiet})
+	find_package(netCDF QUIET)
 	if(netCDF_FOUND)
 		# Ref.: /usr/lib/x86_64-linux-gnu/cmake/netCDF/netCDFConfig.cmake
 		#       from https://packages.debian.org/buster/libnetcdf-dev
@@ -26,7 +26,7 @@ if(NOT netcdf_FOUND)
 endif()
 
 if(NOT netcdf_FOUND)
-	find_package(PkgConfig ${maybe_quiet})
+	find_package(PkgConfig QUIET)
 	if(PKG_CONFIG_FOUND)
 		pkg_check_modules(netcdf ${maybe_quiet} netcdf)
 		if(netcdf_FOUND)

@@ -13,7 +13,7 @@ endif()
 
 if(NOT hdf5_FOUND)
 	# hdf5-*.pc for pkg-config is available on Debian, but not e.g. on Gentoo
-	find_package(PkgConfig ${maybe_quiet})
+	find_package(PkgConfig QUIET)
 	if(PKG_CONFIG_FOUND)
 		foreach(lib hdf5-mpich hdf5-openmpi hdf5-serial)
 			pkg_check_modules(hdf5 ${maybe_quiet} ${lib})
