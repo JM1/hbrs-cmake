@@ -1,12 +1,18 @@
-# Copyright (c) 2016-2017 Jakob Meng, <jakobmeng@web.de>
+# Copyright (c) 2016-2019 Jakob Meng, <jakobmeng@web.de>
 #
 # Redistribution and use is allowed according to the terms of the BSD license.
 # For details see the accompanying COPYING-CMAKE-SCRIPTS file.
 
 include(FindPackageHandleStandardArgs)
 
-find_package(PkgConfig QUIET)
-find_package(hdf5 QUIET)
+if(netcdf_FIND_QUIETLY)
+    set(maybe_quiet QUIET)
+else()
+    set(maybe_quiet)
+endif()
+
+find_package(PkgConfig ${maybe_quiet})
+find_package(hdf5 ${maybe_quiet})
 if(PKG_CONFIG_FOUND AND hdf5_FOUND)
 	pkg_check_modules(netcdf netcdf)
 	if(netcdf_FOUND)
