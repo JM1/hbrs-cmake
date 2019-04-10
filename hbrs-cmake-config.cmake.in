@@ -14,7 +14,9 @@ check_required_components(hbrs-cmake)
 
 # NOTE: Keep list of dependencies in sync with packages in CMakeLists.txt!
 include(CMakeFindDependencyMacro)
-find_dependency(Boost 1.62 REQUIRED COMPONENTS unit_test_framework system thread)
+if(@Boost_FOUND@)
+    find_dependency(Boost 1.62 REQUIRED COMPONENTS unit_test_framework system thread)
+endif()
 
 set(hbrs-cmake_CXX_COMPILER_ID "@CMAKE_CXX_COMPILER_ID@")
 set(hbrs-cmake_CXX_COMPILER_VERSION "@CMAKE_CXX_COMPILER_VERSION@")
