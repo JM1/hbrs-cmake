@@ -24,9 +24,8 @@ docker run -ti jm1337/debian-dev-hbrs:buster
 git clone --depth 1 https://github.com/JM1/hbrs-cmake.git
 cd hbrs-cmake
 mkdir build && cd build/
-cmake -DHBRS_CMAKE_ENABLE_TESTS=ON ..
+cmake ..
 make -j$(nproc)
-ctest --output-on-failure
 sudo make install
 ```
 

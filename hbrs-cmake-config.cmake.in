@@ -1,4 +1,4 @@
-# Copyright (c) 2018 Jakob Meng, <jakobmeng@web.de>
+# Copyright (c) 2018-2019 Jakob Meng, <jakobmeng@web.de>
 #
 # Redistribution and use is allowed according to the terms of the BSD license.
 # For details see the accompanying COPYING-CMAKE-SCRIPTS file.
@@ -11,24 +11,5 @@ set_and_check(hbrs-cmake_CMAKEDIR    "@PACKAGE_HBRS_CMAKE_INSTALL_CMAKEDIR@")
 set_and_check(hbrs-cmake_CMAKEMODDIR "@PACKAGE_HBRS_CMAKE_INSTALL_CMAKEMODDIR@")
 
 check_required_components(hbrs-cmake)
-
-# NOTE: Keep list of dependencies in sync with packages in CMakeLists.txt!
-include(CMakeFindDependencyMacro)
-if(@Boost_FOUND@)
-    find_dependency(Boost 1.62 REQUIRED COMPONENTS unit_test_framework system thread)
-endif()
-
-set(hbrs-cmake_CXX_COMPILER_ID "@CMAKE_CXX_COMPILER_ID@")
-set(hbrs-cmake_CXX_COMPILER_VERSION "@CMAKE_CXX_COMPILER_VERSION@")
-
-if((NOT hbrs-cmake_CXX_COMPILER_ID STREQUAL CMAKE_CXX_COMPILER_ID) OR
-   (NOT hbrs-cmake_CXX_COMPILER_VERSION STREQUAL CMAKE_CXX_COMPILER_VERSION))
-    message(WARNING 
-    "This code was built with C++ compiler ${hbrs-cmake_CXX_COMPILER_ID} ${hbrs-cmake_CXX_COMPILER_VERSION}, "
-    "but you're using ${CMAKE_CXX_COMPILER_ID} ${CMAKE_CXX_COMPILER_VERSION}. "
-    "This might cause linking problems or hardly traceable errors at runtime due to binary incompatibilities! "
-    "Better use the same compiler and same compiler version. For details see "
-    "https://community.kde.org/Policies/Binary_Compatibility_Issues_With_C++")
-endif()
 
 list(APPEND CMAKE_MODULE_PATH ${hbrs-cmake_CMAKEMODDIR})

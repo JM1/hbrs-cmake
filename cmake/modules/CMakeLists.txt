@@ -16,9 +16,6 @@ install(FILES
     FindOBJDUMP.cmake
     FindPERF.cmake
     FindVALGRIND.cmake
-    FuseLibrary.cmake
-    FuseLibraryCmd.cmake
-    FuseLibraryImpl.hpp.in
     MaybeAddFlags.cmake
     #string_replace.cmake
     DESTINATION ${HBRS_CMAKE_INSTALL_CMAKEMODDIR})
