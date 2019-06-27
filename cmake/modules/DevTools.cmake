@@ -38,14 +38,14 @@ macro(has_disassemble _bool)
     endif()
 endmacro()
 
-macro(maybe_disassemble _target_NAME)
+macro(maybe_disassemble _dst_target_NAME _src_target_NAME)
     if (OBJDUMP AND GZIP)
         add_custom_command(
-            TARGET ${_target_NAME} 
+            TARGET ${_dst_target_NAME}
             POST_BUILD
-            #COMMAND ${OBJDUMP} -Mintel --demangle --source --disassemble-all -t $<TARGET_FILE:${_target_NAME}> | ${GZIP} > $<TARGET_FILE:${_target_NAME}>.alst.gz
-            COMMAND ${OBJDUMP} -Mintel --demangle --source --disassemble     -t $<TARGET_FILE:${_target_NAME}>           > $<TARGET_FILE:${_target_NAME}>.lst
-            COMMAND ${OBJDUMP} -Mintel --demangle          --disassemble     -t $<TARGET_FILE:${_target_NAME}> | ${GZIP} > $<TARGET_FILE:${_target_NAME}>.s.gz
+            #COMMAND ${OBJDUMP} -Mintel --demangle --source --disassemble-all -t $<TARGET_FILE:${_src_target_NAME}> | ${GZIP} > $<TARGET_FILE:${_src_target_NAME}>.alst.gz
+            COMMAND ${OBJDUMP} -Mintel --demangle --source --disassemble     -t $<TARGET_FILE:${_src_target_NAME}>           > $<TARGET_FILE:${_src_target_NAME}>.lst
+            COMMAND ${OBJDUMP} -Mintel --demangle          --disassemble     -t $<TARGET_FILE:${_src_target_NAME}> | ${GZIP} > $<TARGET_FILE:${_src_target_NAME}>.s.gz
             VERBATIM
         )
     endif()
@@ -59,12 +59,12 @@ macro(has_callgrind _bool)
     endif()
 endmacro()
 
-macro(maybe_callgrind _target_NAME)
+macro(maybe_callgrind _dst_target_NAME _src_target_NAME)
     if(VALGRIND_FOUND)
         add_custom_command(
-            TARGET ${_target_NAME}
+            TARGET ${_dst_target_NAME}
             POST_BUILD
-            COMMAND ${VALGRIND} --tool=callgrind --dump-instr=yes --callgrind-out-file=$<TARGET_FILE:${_target_NAME}>.cg $<TARGET_FILE:${_target_NAME}>
+            COMMAND ${VALGRIND} --tool=callgrind --dump-instr=yes --callgrind-out-file=$<TARGET_FILE:${_src_target_NAME}>.cg $<TARGET_FILE:${_src_target_NAME}>
             VERBATIM
         )
     endif()
@@ -78,12 +78,12 @@ macro(has_gperftools_profile _bool)
     endif()
 endmacro()
 
-macro(maybe_gperftools_profile _target_NAME)
+macro(maybe_gperftools_profile _dst_target_NAME _src_target_NAME)
     if(gperftools_profiler_FOUND)
         add_custom_command(
-            TARGET ${_target_NAME}
+            TARGET ${_dst_target_NAME}
             POST_BUILD
-            COMMAND env CPUPROFILE=$<TARGET_FILE:${_target_NAME}>.prof CPUPROFILE_FREQUENCY=10000 LD_PRELOAD=${gperftools_profiler_LIBRARY} $<TARGET_FILE:${_target_NAME}>
+            COMMAND env CPUPROFILE=$<TARGET_FILE:${_src_target_NAME}>.prof CPUPROFILE_FREQUENCY=10000 LD_PRELOAD=${gperftools_profiler_LIBRARY} $<TARGET_FILE:${_src_target_NAME}>
             VERBATIM
         )
     endif()
@@ -97,13 +97,13 @@ macro(has_perf _bool)
     endif()
 endmacro()
 
-macro(maybe_perf _target_NAME)
+macro(maybe_perf _dst_target_NAME _src_target_NAME)
     if(PERF_FOUND)
         add_custom_command(
-            TARGET ${_target_NAME}
+            TARGET ${_dst_target_NAME}
             POST_BUILD
-            COMMAND ${PERF} stat -r 10 -d $<TARGET_FILE:${_target_NAME}> > $<TARGET_FILE:${_target_NAME}>.perf.out 2> $<TARGET_FILE:${_target_NAME}>.perf || echo "Running 'perf' tool for '$<TARGET_FILE:${_target_NAME}>' failed with:"
-            COMMAND cat $<TARGET_FILE:${_target_NAME}>.perf
+            COMMAND ${PERF} stat -r 10 -d $<TARGET_FILE:${_src_target_NAME}> > $<TARGET_FILE:${_src_target_NAME}>.perf.out 2> $<TARGET_FILE:${_src_target_NAME}>.perf || echo "Running 'perf' tool for '$<TARGET_FILE:${_src_target_NAME}>' failed with:"
+            COMMAND cat $<TARGET_FILE:${_src_target_NAME}>.perf
             VERBATIM
         )
     endif()
