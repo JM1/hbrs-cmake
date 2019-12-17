@@ -24,9 +24,10 @@ docker run -ti jm1337/debian-dev-hbrs:buster
 git clone --depth 1 https://github.com/JM1/hbrs-cmake.git
 cd hbrs-cmake
 mkdir build && cd build/
-cmake ..
+# install to non-system directory because sudo is not allowed in this docker container
+cmake -DCMAKE_INSTALL_PREFIX=$HOME/.local ..
 make -j$(nproc)
-sudo make install
+make install
 ```
 
 For more examples how to build and test code see [`.travis.yml`](https://github.com/JM1/hbrs-cmake/blob/master/.travis.yml).
