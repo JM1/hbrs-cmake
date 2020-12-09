@@ -5,6 +5,7 @@
 # Redistribution and use is allowed according to the terms of the BSD license.
 # For details see the accompanying COPYING-CMAKE-SCRIPTS file.
 #
+# Ref.: https://github.com/Kitware/CMake/blob/master/Modules/CMakeAddNewLanguage.txt
 
 set(CMAKE_Python3_COMPILER "@CMAKE_Python3_COMPILER@")
 set(CMAKE_Python3_COMPILER_LOADED 1)
@@ -12,3 +13,4 @@ set(CMAKE_Python3_SOURCE_FILE_EXTENSIONS py)
 set(CMAKE_Python3_OUTPUT_EXTENSION .pyc)
 set(CMAKE_Python3_OUTPUT_EXTENSION_REPLACE 1)
 set(CMAKE_Python3_COMPILER_ENV_VAR "@CMAKE_Python3_COMPILER_ENV_VAR@")
+set(CMAKE_Python3_LINK_EXECUTABLE "") # noop

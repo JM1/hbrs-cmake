@@ -42,7 +42,7 @@ def main():
 
     if VERBOSE:
         print("Compiling '%s' to '%s'" % (abs_src, abs_obj))
-    py_compile.compile(SOURCE, cfile=OBJECT)
+    py_compile.compile(abs_src, cfile=abs_obj, doraise=True)
 
     if os.path.exists(abs_bin):
         if VERBOSE:
