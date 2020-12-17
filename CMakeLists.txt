@@ -1,4 +1,4 @@
-# Copyright (c) 2018 Jakob Meng, <jakobmeng@web.de>
+# Copyright (c) 2018-2020 Jakob Meng, <jakobmeng@web.de>
 # vim:set fileformat=unix shiftwidth=4 softtabstop=4 expandtab:
 # kate: end-of-line unix; space-indent on; indent-width 4; remove-trailing-spaces modified;
 #
@@ -10,7 +10,7 @@ cmake_minimum_required(VERSION 3.1 FATAL_ERROR)
 
 #################### project settings ####################
 
-project(hbrs-cmake VERSION 2018.0.0.0)
+project(hbrs-cmake VERSION 2020.0.0.0)
 
 list(APPEND CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake/modules")
 
