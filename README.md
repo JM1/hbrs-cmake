@@ -1,5 +1,4 @@
 # hbrs-cmake
-[![Build Status](https://travis-ci.com/JM1/hbrs-cmake.svg?branch=master)](https://travis-ci.com/JM1/hbrs-cmake)
 
 # How to build this code using Docker
 
@@ -51,5 +50,3 @@ cmake -DCMAKE_INSTALL_PREFIX=$HOME/.local ..
 make -j$(nproc)
 make install
 ```
-
-For more examples how to build and test code see [`.travis.yml`](https://github.com/JM1/hbrs-cmake/blob/master/.travis.yml).
